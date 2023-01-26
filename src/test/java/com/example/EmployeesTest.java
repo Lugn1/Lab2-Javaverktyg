@@ -1,20 +1,46 @@
 package com.example;
 
+import org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import static org.assertj.core.api.Assertions.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 
 class EmployeesTest {
+
     EmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
     BankService bankService = Mockito.mock(BankService.class);
     Employees employees = new Employees(employeeRepository, bankService);
 
+    Employee employee = new Employee("1", 30_000);
+    Employee employee2 = new Employee("2", 45_000);
+
+    @BeforeEach
+    void initialize() {
+        employeeRepository.save(employee);
+        employeeRepository.save(employee2);
+    }
+
     @Test
-    void payEmployees() {
+    void payEmployeesShouldReturnTwo() {
+        assertThat(employees.payEmployees()).isEqualTo(2);
 
     }
 
+    @Test
+    void ifRuntimeExceptionOccursDuringPaymentCatchErrorAndEmployeeShouldNotBePaid(){
+        Mockito.doThrow(RuntimeException.class).when(bankService).pay(employee.getId(), employee.getSalary());
+        employees.payEmployees();
+        assertFalse(employee.isPaid());
 
-
+    }
 
 }
