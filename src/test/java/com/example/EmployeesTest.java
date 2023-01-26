@@ -6,12 +6,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 
 class EmployeesTest {
@@ -27,6 +26,17 @@ class EmployeesTest {
     void initialize() {
         employeeRepository.save(employee);
         employeeRepository.save(employee2);
+    }
+
+    @Test
+    void payEmployeeShouldReturnTrue() {
+        employees.payEmployees();
+        assertTrue(employee2.isPaid());
+    }
+
+    @Test
+    void payEmployeeShouldReturnFalse() {
+        assertFalse(employee2.isPaid());
     }
 
     @Test
