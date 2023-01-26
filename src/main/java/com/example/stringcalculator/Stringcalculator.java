@@ -2,13 +2,18 @@ package com.example.stringcalculator;
 
 public class Stringcalculator {
 
-    public static int add(String s) {
-        int number;
-        if (s.equals(""))
+    public static int add(String numbers) {
+
+        int sum = 0;
+        String[] stringNumbers = numbers.split(",");
+
+        if (numbers.equals(""))
             return 0;
         else {
-            number = Integer.parseInt(s);
-            return number;
+            for (String stringNumber : stringNumbers) {
+                sum += Integer.parseInt(stringNumber);
+            }
         }
+        return sum;
     }
 }
