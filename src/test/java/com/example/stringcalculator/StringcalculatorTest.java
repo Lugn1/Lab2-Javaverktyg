@@ -12,4 +12,12 @@ class StringcalculatorTest {
         assertEquals(0, Stringcalculator.add(""));
 
     }
+
+    @Test
+    void callAddMethodWithOneIntegerShouldReturnTheSameInteger(){
+        String actual = "1";
+        assertEquals(1, Stringcalculator.add(actual));
+    }
+
+
 }
