@@ -33,6 +33,9 @@ class StringcalculatorTest {
         assertEquals(6,Stringcalculator.add("1\n2,3"));
     }
 
-
+    @Test
+    void addNumbersWithSeparateLineOfCodeAndSemicolonAsDelimiterShouldReturnSum() {
+        assertEquals(8, Stringcalculator.add(";\n//;\n1;2;5"));
+    }
 
 }

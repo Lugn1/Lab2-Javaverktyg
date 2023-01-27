@@ -5,12 +5,10 @@ public class Stringcalculator {
     public static int add(String numbers) {
 
         int sum = 0;
-        String[] stringNumbers = numbers.split(",|\n");
+        String[] stringNumbers = numbers.split("//|,|\n|;");
 
-        if (numbers.equals(""))
-            return 0;
-        else {
-            for (String stringNumber : stringNumbers) {
+        for (String stringNumber : stringNumbers) {
+            if (!stringNumber.equals("")) {
                 sum += Integer.parseInt(stringNumber);
             }
         }
