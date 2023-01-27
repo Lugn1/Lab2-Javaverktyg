@@ -24,7 +24,15 @@ class StringcalculatorTest {
 
     @Test
     void addAStringWithMultipleNumbersAndReturnTheSum(){
-        String input = "1,3";
-        assertEquals(4, Stringcalculator.add(input));
+        String input = "1,3,4,20,2";
+        assertEquals(30, Stringcalculator.add(input));
     }
+
+    @Test
+    void addNumbersWithCommaAndNewLineSignShouldStillReturnSumOfAllNumbers() {
+        assertEquals(6,Stringcalculator.add("1\n2,3"));
+    }
+
+
+
 }

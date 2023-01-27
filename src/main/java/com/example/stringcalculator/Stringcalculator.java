@@ -5,7 +5,7 @@ public class Stringcalculator {
     public static int add(String numbers) {
 
         int sum = 0;
-        String[] stringNumbers = numbers.split(",");
+        String[] stringNumbers = numbers.split(",|\n");
 
         if (numbers.equals(""))
             return 0;
