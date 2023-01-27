@@ -2,6 +2,7 @@ package com.example.stringcalculator;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringcalculatorTest {
@@ -36,6 +37,12 @@ class StringcalculatorTest {
     @Test
     void addNumbersWithSeparateLineOfCodeAndSemicolonAsDelimiterShouldReturnSum() {
         assertEquals(8, Stringcalculator.add(";\n//;\n1;2;5"));
+    }
+
+    @Test
+    void callingAddWithNegativeNumberShouldThrowAnException() {
+        String input = ";\n//;\n1;-2;5";
+        assertThatThrownBy(() -> Stringcalculator.add(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
 }

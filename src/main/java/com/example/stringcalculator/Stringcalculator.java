@@ -4,12 +4,17 @@ public class Stringcalculator {
 
     public static int add(String numbers) {
 
+        int number;
         int sum = 0;
         String[] stringNumbers = numbers.split("//|,|\n|;");
 
         for (String stringNumber : stringNumbers) {
             if (!stringNumber.equals("")) {
-                sum += Integer.parseInt(stringNumber);
+                number = Integer.parseInt(stringNumber);
+                if (number < 0) {
+                    throw new IllegalArgumentException("negatives not allowed");
+                } else
+                    sum += number;
             }
         }
         return sum;
