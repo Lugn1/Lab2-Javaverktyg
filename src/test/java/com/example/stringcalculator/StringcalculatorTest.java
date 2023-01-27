@@ -50,4 +50,14 @@ class StringcalculatorTest {
         assertEquals(2, Stringcalculator.add("2;1001"));
     }
 
+    @Test
+    void allowDelimitersOfAnyLengthValueOfTheNumbersShouldReturnSum(){
+        assertEquals(6,Stringcalculator.add("//[*][%]\\n1*2%3"));
+    }
+
+    @Test
+    void returnSumOfNumbersAndAllowMultipleDelimitersWithLengthLongerThanOneChar() {
+        assertEquals(11, Stringcalculator.add("***1,,,2]]]3\nnnn\n4///1"));
+    }
+
 }

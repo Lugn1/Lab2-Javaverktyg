@@ -8,7 +8,7 @@ public class Stringcalculator {
         int number;
         int sum = 0;
 
-        String[] stringNumbers = numbers.split("//|,|\n|;");
+        String[] stringNumbers = numbers.split("[///,;\\n\\*%\\[\\]\\\\a-z]");
 
         for (String stringNumber : stringNumbers) {
             if (!stringNumber.equals("")) {
