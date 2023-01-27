@@ -45,4 +45,9 @@ class StringcalculatorTest {
         assertThatThrownBy(() -> Stringcalculator.add(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void numbersBiggerThan1000ShouldBeIgnoredButReturnSumOfTheRest() {
+        assertEquals(2, Stringcalculator.add("2;1001"));
+    }
+
 }
